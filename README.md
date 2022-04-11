@@ -1,10 +1,11 @@
-<h3 align="center">
-  <img alt="logo" title="logo" src="./.github/logo.svg" width="220px" />
-</h3>
+<h1 align="center">
+  <img alt="Logo" src="./public/images/logo.svg" alt="ig.News">
+</h1>
 
-<p align="center">
-  <img alt="ignews" title="ignews" src="./.github/ignews.png" width="100%" />
-</p>
+<h1 align="center">
+    ig.News - Next.js
+</h1>
+<p align="center">Aplicação para inscrição de newsletter com pagamento via stripe</p>
 
 ## 🚀 Tecnologias e Bibliotecas
 
