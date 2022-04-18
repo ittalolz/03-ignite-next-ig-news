@@ -1,5 +1,6 @@
 import NextAuth from "next-auth"
 import GithubProvider from "next-auth/providers/github"
+import { redirect } from "next/dist/server/api-utils"
 
 export default NextAuth({
   
@@ -7,12 +8,16 @@ export default NextAuth({
     GithubProvider({
       clientId: process.env.GITHUB_ID,
       clientSecret: process.env.GITHUB_SECRET,
-      authorization: {
-        params: {
-          scope: 'read:user'
-        }
-      }
     }),
-    
   ],
+  callbacks: {
+    async signIn({ user, account, profile, email, credentials }) {
+      console.log(user)
+
+      return true
+    },
+    // async redirect({url, baseUrl})  {
+    //   return Promise.resolve(url)
+    // }  
+  }
 })
