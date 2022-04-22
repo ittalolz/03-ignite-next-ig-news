@@ -3,29 +3,12 @@ import { SessionProvider } from "next-auth/react"
 import { Header } from "../components/Header"
 
 import '../styles/global.scss'
-import { PrismicProvider } from "@prismicio/react"
-import { linkResolver, repositoryName } from "../services/prismicio"
-import Link from "next/link"
-import { PrismicPreview } from "@prismicio/next"
 
-function MyApp({ Component, pageProps }: AppProps) {
+function MyApp({ Component, pageProps: { session, ...pageProps } }: AppProps) {
   return (
-    <SessionProvider session={pageProps.session} refetchInterval={0}>
+    <SessionProvider session={session}>
       <Header />
-      <PrismicProvider
-      linkResolver={linkResolver}
-      internalLinkComponent={({ href, children, ...props }) => (
-        <Link href={href}>
-          <a {...props}>
-            {children}
-          </a>
-        </Link>
-      )}
-    >      
-      <PrismicPreview repositoryName={repositoryName}>
-        <Component {...pageProps} />
-      </PrismicPreview>
-    </PrismicProvider>
+      <Component {...pageProps} />
     </SessionProvider>
   )
 }
